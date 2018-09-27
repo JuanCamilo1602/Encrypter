@@ -2,10 +2,15 @@ import java.io.*;
 public class Encrypter{
 
   public static void main(String[]args)throws IOException{
-    InputStreamReader in=new InputStreamReader(System.in);
-    BufferedReader br=new BufferedReader(in);
-    BufferedWriter bw = new BufferedWriter( new OutputStreamWriter(System.out));    
-    String text=br.readLine();      //the text original
+    InputStreamReader isr=new InputStreamReader(System.in);
+    BufferedReader br=new BufferedReader(isr);
+    BufferedWriter bw = new BufferedWriter( new OutputStreamWriter(System.out));
+    
+    String text=br.readLine();   //the text original
+    text=text.toLowerCase(); //change to lower case text
+    bw.write("Text in tolowercase : "+text); // print the thext in tolowercase
+    bw.newLine();
+    
     text=text.replace("a","4");  //replace char a to char 4
     text=text.replace("e","3"); //replace char e to char 3
     text=text.replace("i","1");//replace char i to char 1
@@ -17,7 +22,8 @@ public class Encrypter{
     function[2]=1;
     function[3]=0;
     function[4]=9;     
-    String[] fun=new String[5];   
+    
+    String[] fun=new String[5];       
     for(int i = 0; i<5; i++)           //vowels encrypter     
        {
         function[i]=function[i]+1;       //function to encrypt
@@ -30,22 +36,38 @@ public class Encrypter{
     text=text.replace("9",fun[4]);
     bw.write(text + "\n");
     bw.flush();
-    text=text.toLowerCase();  //change to lower case text
-    bw.write("Text in tolowercase : "+text); // print the thext in tolowercase
-
+   
     int[]cons=new int[23];             //variable to encrypt consonants
     for(int a=1; a<22; a++)
        cons[a]=a;
        
     for(int t=1; t<23; t++)            //encrypter consonants                                    
-        cons[t]=cons[t]+1;             //function to encrypt
+        cons[t]=cons[t]+2;             //function to encrypt
    
-    text=text.replace("b","10"); text=text.replace("c","11"); text=text.replace("d","12");text=text.replace("f","13");text=text.replace("g","14");text=text.replace("h","15"); text=text.replace("j","16");
-    text=text.replace("k","17");text=text.replace("l","180");text=text.replace("m","19");text=text.replace("n","20");text=text.replace("ñ","21");text=text.replace("p","22");text=text.replace("q","23");
-    text=text.replace("r","24");text=text.replace("s","25");text=text.replace("t","26");text=text.replace("v","27");text=text.replace("w","28");text=text.replace("x","29");text=text.replace("y","30");
-    text=text.replace("z","31");
+    text=text.replace("b","1010");//assigned numbers to consonant
+    text=text.replace("c","1020");
+    text=text.replace("d","1030");
+    text=text.replace("f","1040");
+    text=text.replace("g","1050");
+    text=text.replace("h","1060");
+    text=text.replace("j","1070");
+    text=text.replace("k","1080");
+    text=text.replace("l","1090");
+    text=text.replace("m","1100");
+    text=text.replace("n","1110");
+    text=text.replace("ñ","1120");
+    text=text.replace("p","1130");
+    text=text.replace("q","1140");
+    text=text.replace("r","1150");
+    text=text.replace("s","1160");
+    text=text.replace("t","1170");
+    text=text.replace("v","1180");
+    text=text.replace("w","1190");
+    text=text.replace("x","1200");
+    text=text.replace("y","1210");
+    text=text.replace("z","1220");
    
-    int val=10;
+    int val=1010;
     String va; 
     for(int z=1; z<22; z++)             //replace consonants
        {
@@ -164,8 +186,9 @@ public class Encrypter{
                                               va=Integer.toString(val);
                                               text=text.replace(va,"y");
                                               val=val+10;
-                                                   	}
-                                      else                                                                     
+                  }
+                                      else
+                                                                      
                                       if(cons[z]==22 || cons[z]==44 || cons[z]==66 || cons[z]==88)
                                          {
                                           va=Integer.toString(val);
@@ -174,6 +197,6 @@ public class Encrypter{
                                            }
                                    }
                               } 
-                      }                               
+                      }                             
   }
 }
